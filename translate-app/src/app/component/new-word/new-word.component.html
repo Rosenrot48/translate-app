@@ -1,0 +1,17 @@
+<form [formGroup]="this.newWord" (submit)="add()">
+<h1 mat-dialog-title> Введите новое слово</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline" style="margin-right: 5%">
+    <mat-label>Новое слово</mat-label>
+    <input matInput type="text" formControlName="word">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Перевод</mat-label>
+    <input matInput type="text" formControlName="translate">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="cancel()">Отмена</button>
+  <button mat-raised-button color="primary" (click)="add()" [disabled]="this.newWord.controls['translate'].value.length === 0">Добавить</button>
+</div>
+</form>

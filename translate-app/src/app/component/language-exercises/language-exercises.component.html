@@ -1,0 +1,88 @@
+<app-navbar [navTitle]="'Упражнения'"></app-navbar>
+<div *ngIf="this.isReadyToShow && !this.isFinished" >
+  <div class="flex-container">
+    <form [formGroup]="trainingFG">
+      <mat-card class="example-card left">
+        <mat-card-header>
+          <mat-card-title>Английский</mat-card-title>
+          <mat-hint></mat-hint>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            {{this.trainingFG.controls['word'].value}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button style="margin-left: 4%;" (click)="this.skipPair()">Пропустить слово</button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Русский</mat-card-title>
+          <mat-hint></mat-hint>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field appearance="standard" style="width: 100%">
+            <input matInput type="text" formControlName="translate">
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button style="margin-left: 4%;" [disabled]="this.trainingFG.controls['translate'].value.length === 0" (click)="this.checkMatches()">Проверить</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>
+<div *ngIf="!this.isReadyToShow && !this.isFinished">
+  <mat-card class="introduction-card">
+    <mat-card-header>
+      <mat-card-title>
+        Укажите количество слов и язык, с которого хотите переводить
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div [formGroup]="settingsFg">
+        <mat-form-field appearance="standard" style="margin-left: 10%; display: inline-block; float: left">
+          <mat-label>Количество слов</mat-label>
+          <input matInput type="number" formControlName="numberOfWords" />
+        </mat-form-field>
+        <!--      </div>-->
+        <!--      <div style="">-->
+        <mat-form-field appearance="standard" style="display: inline-block; margin-left: 30%">
+          <mat-label>Изучаемый язык</mat-label>
+          <mat-select formControlName="studyingLanguage">
+            <mat-option *ngFor="let language of this.languages" [value]="language">
+              {{language}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button style="margin: auto; display: block" [disabled]="this.settingsFg.invalid === true" (click)="this.toggleShow()">Начать</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<div *ngIf="this.isFinished">
+  <mat-card class="introduction-card">
+    <mat-card-header class="result">
+      <mat-card-title class="mat-h3" style="font-size: xx-large">
+        Результат
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="mat-h3 result-info-container">
+        Правильных слов: {{this.passWord}}
+      </div>
+      <div class="mat-h3 result-info-container">
+        Пропущенных слов: {{this.skipWord}}
+      </div>
+      <div class="mat-h3 result-info-container">
+        Всего слов: {{this.numberOfWords}}
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <!--      <button mat-button style="margin: auto; display: block" [disabled]="this.settingsFg.invalid === true" (click)="this.toggleShow()">Начать</button>-->
+    </mat-card-actions>
+  </mat-card>
+</div>

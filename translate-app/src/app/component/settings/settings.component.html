@@ -1,0 +1,60 @@
+<app-navbar [navTitle]="'Мой профиль'"></app-navbar>
+<div class="empty-container">
+  <form [formGroup]="profileFG">
+    <div *ngIf="hasPersonInfo">
+      <div class="example-form mat-h1">
+        <div>
+          <mat-icon class="empty-icon">account_circle</mat-icon>
+        </div>
+        <div>
+          {{profileFG.get('name').value}}
+        </div>
+        <div>
+          Возраст: {{profileFG.get('age').value}}
+        </div>
+        <div>
+          <span *ngIf="this.profileFG.get('studyingLanguage').value">Изучаемый язык: {{profileFG.get('studyingLanguage').value}}</span><br>
+          <span *ngIf="this.profileFG.get('numberOfWords').value"> Слов для тренировки: {{profileFG.get('numberOfWords').value}}</span>
+        </div>
+
+        <br>
+        <div>
+          <button mat-raised-button color="primary" (click)="this.hasPersonInfo = false">Изменить</button>
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div *ngIf="!hasPersonInfo">
+      <div class="example-form mat-h1">
+        <div>
+          <mat-icon class="empty-icon">account_circle</mat-icon>
+        </div>
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Имя</mat-label>
+        <input matInput placeholder="Как к вам обращаться" type="text" formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="margin-left: 2%">
+        <mat-label>Возраст</mat-label>
+        <input matInput type="text" placeholder="Укажите Ваш возраст" formControlName="age">
+      </mat-form-field>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Изучаемый язык</mat-label>
+          <mat-select formControlName="studyingLanguage">
+            <mat-option [value]="null"></mat-option>
+            <mat-option [value]="'English'">English</mat-option>
+            <mat-option [value]="'Русский'">Русский</mat-option>
+          </mat-select>
+<!--          <input matInput type="text" formControlName="studyingLanguage">-->
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="margin-left: 2%">
+          <mat-label>Количество изучаемых слов</mat-label>
+          <input matInput type="number" formControlName="numberOfWords">
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" (click)="saveSettings()">Сохранить</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,40 @@
+<app-navbar [navTitle]="'Мои слова'" aria-label="Изученные слова"></app-navbar>
+<div *ngIf="this.words.length !== 0">
+<div class="toolbar">
+  <button mat-icon-button color="primary" matTooltip="Поменять список слов" [matMenuTriggerFor]="languageMenu">
+    <mat-icon>translate</mat-icon>
+  </button>
+  <mat-menu #languageMenu="matMenu">
+    <button mat-menu-item>English</button>
+    <button mat-menu-item>Germany</button>
+  </mat-menu>
+  <button mat-icon-button matTooltip="Добавить новое слово" color="primary" (click)="addNewWord()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<div>
+
+  <mat-form-field class="filter">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Найти слово">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 word-table">
+    <ng-container [matColumnDef]="column" *ngFor="let column of this.displayedColumns">
+      <th mat-header-cell class="text-center sticky" *matHeaderCellDef>{{column | translate}}</th>
+      <td mat-cell class="text-center" *matCellDef="let word">{{word[column]}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showInfo(row)"></tr>
+  </table>
+</div>
+</div>
+<div *ngIf="this.words.length === 0">
+  <div class="empty-container">
+    <div class="example-form mat-h3">
+      <mat-icon class="empty-icon">import_contacts</mat-icon>
+      <div class="example-form mat-h1 empty-text" >Ваш словарь пуст :(</div>
+      <div class="example-form mat-h2">
+        <button mat-raised-button color="primary" (click)="addNewWord()">Добавить новое слово</button></div>
+    </div>
+  </div>
+</div>
