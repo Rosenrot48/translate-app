@@ -1,0 +1,15 @@
+<h1 mat-dialog-title> Информация о слове: {{data.word.word}}</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Новое слово</mat-label>
+    <input matInput type="text" [(ngModel)]="data.word.word" disabled>
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-right: 5%">
+    <mat-label>Перевод</mat-label>
+    <input matInput type="text" [(ngModel)]="data.word.translate">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="cancel()">Отмена</button>
+  <button mat-raised-button color="primary" (click)="close()">Закрыть</button>
+</div>

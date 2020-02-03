@@ -1,0 +1,73 @@
+.example-card {
+  height: 300px;
+  width: 500px;
+  margin-top: 25%;
+  /*padding-left: 15%;*/
+  /*margin-left: 25%;*/
+  /*margin-right: 25%;*/
+  /*position: relative;*/
+  display: inline-block;
+}
+mat-card{
+  /*background-color: #fff6e6;*/
+}
+.left{
+  margin-right: 50px;
+
+}
+p {
+  font-size: 54px;
+  padding-top: 15%;
+  padding-left: 2%;
+}
+input[type=text] {
+  font-size: 54px;
+  padding-top: 5%;
+  padding-left: 2%;
+}
+input[type=number] {
+  font-size: x-large;
+}
+button {
+  background-color: #6495ed;
+}
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+.introduction-card {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15%;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/*.example-header-image {*/
+/*  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');*/
+/*  background-size: cover;*/
+/*}*/
+.flex-container {
+  display: flex;
+  justify-content: center;
+}
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 1000px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+.result-info-container {
+  font-size: large;
+  margin: 2%;
+}
+.result {
+  margin-left: 38%;
+}
