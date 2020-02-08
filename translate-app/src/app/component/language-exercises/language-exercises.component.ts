@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {TranslateRestService} from "../../service/translate-rest.service";
 
 @Component({
   selector: 'app-language-exercises',
@@ -21,7 +22,8 @@ export class LanguageExercisesComponent implements OnInit {
   isReadyToShow: boolean;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private trs: TranslateRestService
   ) {
     this.isFinished = false;
     if (localStorage.getItem('studyingWords') !== null) {
@@ -43,6 +45,10 @@ export class LanguageExercisesComponent implements OnInit {
     if (this.isReadyToShow) {
       this.getRandomArrayElement();
     }
+    this.trs.getUsers()
+      .subscribe(result => {
+        console.log(result);
+      });
   }
   toggleShow() {
     this.isReadyToShow = !this.isReadyToShow;
