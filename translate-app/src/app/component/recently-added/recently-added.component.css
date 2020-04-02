@@ -1,0 +1,66 @@
+.toolbar{
+  padding-top: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  float: right;
+  margin-right: 1%;
+  vertical-align: center;
+}
+.word-table{
+  margin-right: auto;
+  margin-left: auto;
+  width: 60%;
+  margin-bottom: 2%;
+}
+.text-center {
+  text-align: center;
+}
+th {
+  font-size: xx-large;
+}
+.sticky {
+  position: sticky;
+  top: 2em;
+  min-height: 2em;
+  background-color: white;
+}
+.filter {
+  margin-top: 2%;
+  font-size: 14px;
+  width: 30%;
+  margin-left: 20%;
+  margin-right: auto;
+}
+/*th {*/
+  /*position: fixed;*/
+/*}*/
+/*::ng-deep .mat-form-field-underline {*/
+/*  display: none;*/
+/*}*/
+
+.empty-container {
+  position: relative;
+  top: 30%;
+  margin-left: 20px;
+}
+.example-form {
+  /*min-width: 150px;*/
+  /*max-width: 500px;*/
+  /*width: 100%;*/
+  margin-top: 4%;
+  justify-content: center;
+  display: block;
+  margin-right: 20%;
+  margin-left: 20px;
+}
+.empty-icon {
+  font-size: 200px;
+  color: #6495ed;
+}
+.empty-text {
+  color: #6495ed;
+}
+/*::ng-deep .mat-form-field-underline {*/
+  /*display: none;*/
+  /*color: black ;*/
+/*}*/

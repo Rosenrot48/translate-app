@@ -1,0 +1,86 @@
+<div class="login-element mat-elevation-z8" *ngIf="!loginFormToggle">
+  <div style="align: center; color: cornflowerblue;">
+    <h1>Приветствуем Вас!</h1>
+    <h4>Пожалуйста, представтесь</h4>
+  </div>
+  <div>
+    <form [formGroup]="loginFG" (submit)="login()">
+
+      <mat-form-field  appearance="outline" class="full-width-field">
+        <mat-label>Логин:</mat-label>
+        <input matInput value="" placeholder="Укажите ваш email" formControlName="email"
+               autocomplete="off" type="text">
+      </mat-form-field>
+      <mat-form-field  appearance="outline"  class="full-width-field">
+        <mat-label>Пароль:</mat-label>
+        <input matInput value="" placeholder="Пароль" formControlName="password"
+               autocomplete="off" type="password">
+      </mat-form-field><br>
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginFG.invalid == true" (click)="login()" >Войти</button>
+      <button mat-raised-button style="margin-left: 2%" color="primary" (click)="this.toggleForm()">Зарегистрироваться</button>
+    </form>
+  </div>
+</div>
+<div  class="registry-element mat-elevation-z8"  *ngIf="loginFormToggle">
+  <div style="margin-left: 2%; align: center; color: cornflowerblue;">
+    <h3>Мы рады, что Вы хотите присоединиться к нашей компании:)</h3>
+    <h5>P.S. Вы не пожалеете</h5>
+  </div>
+  <div>
+    <mat-horizontal-stepper [linear]="false" #stepper>
+      <mat-step>
+        <ng-template matStepLabel>
+          Создание учетной записи
+        </ng-template>
+    <form [formGroup]="registerFG" (submit)="registry()">
+      <mat-form-field appearance="outline" class="full-width-field">
+        <mat-label>Логин </mat-label>
+        <input matInput type="text" formControlName="email" placeholder="Укажите email">
+      </mat-form-field>
+      <mat-form-field  appearance="outline"  class="full-width-field">
+        <mat-label>Пароль</mat-label>
+        <input matInput value="" placeholder="Пароль" formControlName="password"
+               autocomplete="off" type="password">
+      </mat-form-field><br>
+      <mat-form-field  appearance="outline"  class="full-width-field">
+        <mat-label>Подтвердите пароль</mat-label>
+        <input matInput value="" placeholder="Пароль" formControlName="rewritePassword"
+               autocomplete="off" type="password">
+      </mat-form-field><br>
+    </form>
+        <div>
+          <button mat-raised-button color="primary" (click)="toggleForm()" style="margin-right: 2%">Логин</button>
+          <button mat-raised-button color="primary" matStepperNext [disabled]="!this.registryCreation"> Вперед </button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>
+          Укажите контактную информацию
+        </ng-template>
+        <form [formGroup]="registerFG" (submit)="registry()">
+          <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Фамилия</mat-label>
+            <input matInput type="text" formControlName="surname">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Имя</mat-label>
+            <input matInput type="text" formControlName="name">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Дата рождения</mat-label>
+            <input matInput type="text" formControlName="birthday" mask="00.00.0000" [dropSpecialCharacters]="false">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Номер телефона</mat-label>
+            <input matInput type="text" formControlName="telephone" mask="+0(000)000-0000" [dropSpecialCharacters]="false">
+          </mat-form-field>
+        </form>
+        <div>
+          <button mat-raised-button color="primary" (click)="toggleForm()" style="margin-right: 2%">Логин</button>
+          <button mat-raised-button color="primary" matStepperPrevious> Назад </button>
+          <button mat-raised-button color="primary" (click)="registry()" [disabled]="registerFG.invalid == true" style="margin-left: 2%">Зарегистрироваться</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+</div>
