@@ -7,13 +7,18 @@ import {Observable} from "rxjs";
 })
 export class TranslateRestService {
 
-  backendUrl = 'localhost:3000';
+  backendUrl = `http://localhost:5000`;
+
   constructor(
     private http: HttpClient
   ) { }
 
   getUsers(): Observable<any> {
-    const endpoint = `${this.backendUrl}/api/users`;
-    return this.http.get(endpoint, {withCredentials: true});
+    const endpoint = `${this.backendUrl}/api/users/`;
+    return this.http.get(endpoint);
+  }
+  getTranslate(word: string): Observable<any> {
+    const endpoint = `${this.backendUrl}/api/translate/${word}`;
+    return this.http.get(endpoint);
   }
 }

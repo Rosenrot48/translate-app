@@ -47,11 +47,14 @@
             <mat-option [value]="'English'">English</mat-option>
             <mat-option [value]="'Русский'">Русский</mat-option>
           </mat-select>
-<!--          <input matInput type="text" formControlName="studyingLanguage">-->
         </mat-form-field>
         <mat-form-field appearance="outline" style="margin-left: 2%">
           <mat-label>Количество изучаемых слов</mat-label>
           <input matInput type="number" formControlName="numberOfWords">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="margin-left: 2%">
+          <mat-label>Время для прохождения теста</mat-label>
+          <input matInput type="number" placeholder="Укажите время для теста в минутах" formControlName="timer">
         </mat-form-field>
       </div>
       <button mat-raised-button color="primary" (click)="saveSettings()">Сохранить</button>

@@ -31,6 +31,12 @@ import { NewWordComponent } from './component/new-word/new-word.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { WordInfoComponent } from './component/word-info/word-info.component';
+import { AuthComponent } from './component/auth/auth.component';
+import {LoginGuard} from "./service/login.guard";
+import {MatStepperModule} from "@angular/material/stepper";
+import {IConfig, NgxMaskModule} from "ngx-mask";
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
   declarations: [
@@ -43,6 +49,7 @@ import { WordInfoComponent } from './component/word-info/word-info.component';
     FooterComponent,
     NewWordComponent,
     WordInfoComponent,
+    AuthComponent,
   ],
   imports: [
     HttpClientModule,
@@ -74,8 +81,13 @@ import { WordInfoComponent } from './component/word-info/word-info.component';
     MatTooltipModule,
     ReactiveFormsModule,
     FormsModule,
+    MatStepperModule,
+    NgxMaskModule.forRoot(options),
+
   ],
-  providers: [],
+  providers: [
+    LoginGuard
+  ],
   bootstrap: [AppComponent],
   entryComponents: [NewWordComponent, WordInfoComponent]
 })

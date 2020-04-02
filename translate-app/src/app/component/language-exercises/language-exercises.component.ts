@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TranslateRestService} from "../../service/translate-rest.service";
 
@@ -7,7 +7,7 @@ import {TranslateRestService} from "../../service/translate-rest.service";
   templateUrl: './language-exercises.component.html',
   styleUrls: ['./language-exercises.component.css']
 })
-export class LanguageExercisesComponent implements OnInit {
+export class LanguageExercisesComponent implements OnInit, OnDestroy {
 
 
   isFinished: boolean;
@@ -45,11 +45,10 @@ export class LanguageExercisesComponent implements OnInit {
     if (this.isReadyToShow) {
       this.getRandomArrayElement();
     }
-    this.trs.getUsers()
-      .subscribe(result => {
-        console.log(result);
-      });
   }
+  ngOnDestroy(): void {
+  }
+
   toggleShow() {
     this.isReadyToShow = !this.isReadyToShow;
     localStorage.setItem('studyingLanguage', JSON.stringify(this.settingsFg.get('studyingLanguage').value));
