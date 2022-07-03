@@ -1,0 +1,18 @@
+.login-element {
+  width: 500px;
+  max-width: 90%;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 500;
+  padding: 20px;
+}
+.registry-element {
+  width: 900px;
+  max-width: 90%;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 500;
+  padding: 20px;
+}
